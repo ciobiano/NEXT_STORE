@@ -66,17 +66,6 @@ module.exports = require("@reduxjs/toolkit");
 
 /***/ }),
 
-/***/ "react/jsx-dev-runtime":
-/*!***********************************************************!*\
-  !*** external "next/dist/compiled/react/jsx-dev-runtime" ***!
-  \***********************************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/compiled/react/jsx-dev-runtime");
-
-/***/ }),
-
 /***/ "react-redux":
 /*!******************************!*\
   !*** external "react-redux" ***!
@@ -85,6 +74,17 @@ module.exports = require("next/dist/compiled/react/jsx-dev-runtime");
 
 "use strict";
 module.exports = require("react-redux");
+
+/***/ }),
+
+/***/ "react/jsx-dev-runtime":
+/*!****************************************!*\
+  !*** external "react/jsx-dev-runtime" ***!
+  \****************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("react/jsx-dev-runtime");
 
 /***/ })
 
