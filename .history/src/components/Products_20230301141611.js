@@ -1,0 +1,24 @@
+import React from 'react'
+import Image from 'next/imageimport {starIcon} from "@heroicons/react/solid"
+
+v
+
+function Products({id,title,price ,description, category,image}) {
+
+  const [rating] = useState(2);
+  return (
+    <div>
+        <p>{category}</p>
+        <Image src={image} width={200} height={200} style={{objectFit:"contain"}} />
+        <h4>{title}</h4>
+        <div className="flex">
+            {Array(rating).fill().map((_,i)=>(
+                <StarIcon className="h-5 text-yellow-500" />
+            ))}
+
+            </div>
+    </div>
+  )
+}
+
+export default Products
