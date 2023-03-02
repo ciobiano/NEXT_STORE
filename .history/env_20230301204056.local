@@ -1,0 +1,4 @@
+#Authentication
+GOOGLE_TO=
+GOOGLE_SECRET=""
+NEXTAUTH_URL=

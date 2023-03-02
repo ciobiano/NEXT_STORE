@@ -1,0 +1,11 @@
+#Authentication
+GOOGLE_TO=
+GOOGLE_SECRET=""
+NEXTAUTH_URL=http://localhost:3000
+
+#stripe
+STRIPE_PUBLIC_KEY=""
+STRIPE_SECRET_KEY=""
+
+#stipe Termial/cli 
+STRIPE_SIGNING_SECR

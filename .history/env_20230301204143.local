@@ -1,0 +1,7 @@
+#Authentication
+GOOGLE_TO=
+GOOGLE_SECRET=""
+NEXTAUTH_URL=http://localhost:3000
+
+#stripe
+STRIPE_P
