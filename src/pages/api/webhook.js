@@ -1,8 +1,8 @@
-import {buffer} from 'mirco'
+import buffer from 'mirco'
 import * as admin from 'firebase-admin'
 
 // Secure your firebase admin sdk
-const serviceAccount = require('../../../permission.json')
+const serviceAccount = require('.../../../permission.json')
 
 const app = !admin.apps.length ? admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
