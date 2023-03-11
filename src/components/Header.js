@@ -7,19 +7,14 @@ import {
 } from "@heroicons/react/outline";
 
 import { useSession, signIn, signOut } from "next-auth/react";
-import {useRouter} from "next/router"
+import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 
-
 export default function Header() {
-const  {data:session} = useSession();
-const router= useRouter();
-const items = useSelector(selectItems);
-
-
-
-
+	const { data: session } = useSession();
+	const router = useRouter();
+	const items = useSelector(selectItems);
 
 	return (
 		<header>
@@ -27,10 +22,11 @@ const items = useSelector(selectItems);
 			<div className=" flex  items-center bg-amazon_blue p-1 flex-grow py-2 justify-center">
 				<div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
 					<Image
+						onClick={() => router.push("/")}
 						src="https://links.papareact.com/f90"
 						width={150}
 						height={40}
-						style={{objectFit:"contain"}}
+						style={{ objectFit: "contain" }}
 						className="cursor-pointer"
 					/>
 				</div>
@@ -47,15 +43,22 @@ const items = useSelector(selectItems);
 				<div className="text-white flex text-xs space-x-6 mx-6  whitespace-nowrap">
 					<div onClick={!session ? signIn : signOut} className=" link ">
 						<p className="hover:underline">
-							{session ? `Hello, ${session.user.name}`: 'Sign In'}
+							{session ? `Hello, ${session.user.name}` : "Sign In"}
 						</p>
 						<p className="font-extrabold md:text-sm">Account & Lists</p>
 					</div>
-					<div className=" link ">
-						<p>callback</p>
+					<div
+						onClick={() => router.push("/orders")}
+						className=" link cursor-pointer"
+					>
+						<p>Return</p>
 						<p className="font-extrabold md:text-sm">&order</p>
 					</div>
-					<div onClick={()=> router.push("/checkout")} className="relative link flex items-center  ">
+					<div
+						onClick={() => router.push("/checkout")}
+						disabled = {!session}
+						className="relative link flex items-center  "
+					>
 						<span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold ">
 							{items.length}
 						</span>
@@ -72,14 +75,13 @@ const items = useSelector(selectItems);
 				</p>
 				<p className="link">prime video</p>
 				<p className="link">Amazon Business</p>
-				<p className="link"> Today's Deals</p> 
-        <p className="hidden lg:inline-flex link">Electronics</p>
-        <p className="hidden lg:inline-flex link">Food & Grocery</p>
-        <p className="hidden lg:inline-flex link">Prime</p>
-        <p className="hidden lg:inline-flex link">Buy Again</p>
-        <p className="hidden lg:inline-flex link">Shopper Toolkit</p>
-        <p className="hidden lg:inline-flex link">Health & Personal Care</p>
-        
+				<p className="link"> Today's Deals</p>
+				<p className="hidden lg:inline-flex link">Electronics</p>
+				<p className="hidden lg:inline-flex link">Food & Grocery</p>
+				<p className="hidden lg:inline-flex link">Prime</p>
+				<p className="hidden lg:inline-flex link">Buy Again</p>
+				<p className="hidden lg:inline-flex link">Shopper Toolkit</p>
+				<p className="hidden lg:inline-flex link">Health & Personal Care</p>
 			</div>
 		</header>
 	);

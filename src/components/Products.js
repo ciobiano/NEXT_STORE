@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
@@ -8,28 +8,43 @@ import { addToBasket } from "../slices/basketSlice";
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
-function Products({ id, title, price, description, category, image, rating, hasPrime }) {
+function Products({
+	id,
+	title,
+	price,
+	description,
+	category,
+	image,
+	
+}) {
+	const dispatch = useDispatch();
 
-const dispatch = useDispatch();
+	const [rating, setRating] = useState(1);
 
-  rating = rating || Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING;
-  hasPrime = hasPrime || Math.random() < 0.5;
-  // Component logic here
+	const [hasPrime, setHasPrime] = useState(true);
 
-const addItemToBasket = () => {	
+	useEffect(() => {
+		setRating(
+			Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
+		);
 
-	const product ={
-		id,
-		title,
-		price,
-		rating,
-		description,
-		category,
-		image,
-		hasPrime, 
-	}
-	dispatch(addToBasket(product));
-}
+		setHasPrime(Math.random() < 0.5);
+	}, []);
+	// Component logic here
+
+	const addItemToBasket = () => {
+		const product = {
+			id,
+			title,
+			price,
+			rating,
+			description,
+			category,
+			image,
+			hasPrime,
+		};
+		dispatch(addToBasket(product));
+	};
 
 	return (
 		<div className="relative flex flex-col m-5 bg-white z-30 p-10">
@@ -62,7 +77,9 @@ const addItemToBasket = () => {
 					<p className="text-xs text-gray-500">FREE Next-day Delivery</p>
 				</div>
 			)}
-			<button onClick={addItemToBasket} className="mt-auto button">Add to Cart</button>
+			<button onClick={addItemToBasket} className="mt-auto button">
+				Add to Cart
+			</button>
 		</div>
 	);
 }

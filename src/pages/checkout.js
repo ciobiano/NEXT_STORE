@@ -45,7 +45,7 @@ function checkout() {
 						style={{ objectFit: "contain" }}
 					/>
 					<div className=" flex flex-col p-5 space-y-10 bg-white-200 ">
-						<h1 className="text-2xl border-b pb-4">
+						<h1 className="text-2xl border-b border-gray-500 border-b-2 pb-4 ">
 							{items.length === 0
 								? "Your Amazon Cart is empty"
 								: "Shopping Cart"}
@@ -66,8 +66,8 @@ function checkout() {
 				</div>
 				{/* right side  */}
 
-				<div className="flex flex-col bg-white p-10 shadow-md">
-					{items.length > 0 && (
+				{items.length > 0 && (
+					<div className="flex  flex-col bg-white p-10 shadow-md">
 						<>
 							<h2 className="whitespace-nowrap">
 								subtotal ({items.length}items): {""}
@@ -87,8 +87,8 @@ function checkout() {
 								{!session ? "Sign in to checkout " : "Proceed to checkout"}
 							</button>
 						</>
-					)}
-				</div>
+					</div>
+				)}
 			</main>
 		</div>
 	);
